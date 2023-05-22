@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  mail_server:
+    build: .
+    # adding user to mail is done here
+    # tail -f /dev/null to keep the containerised mail server running
+    command: -c "
+      service postfix start
+      && adduser postfixdocker mail
+      && tail -f /dev/null"
+    # needs to be host so that your internal server loopback works with what
+    # your application sends
+    network_mode: "host"
+    volumes:
+      - mail_server:/mail_app
+
+volumes:
+  mail_server:

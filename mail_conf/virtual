@@ -1,0 +1,4 @@
+@localhost postfixdocker
+@localhost.com postfixdocker
+@postfixdocker.com postfixdocker
+@postfixdocker postfixdocker
